@@ -1,3 +1,4 @@
+import 'package:busca_cep/controller/home_controller.dart';
 import 'package:busca_cep/view/widgets/buttons/search_button.dart';
 import 'package:busca_cep/view/widgets/buttons/exit_button.dart';
 import 'package:busca_cep/view/widgets/texts/search_output.dart';
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget
   State<HomePage> createState() => _HomePageState();
 }
 
+HomeController home_controller = new HomeController();
+
 class _HomePageState extends State<HomePage>
 {
   @override
@@ -24,7 +27,7 @@ class _HomePageState extends State<HomePage>
       body: Stack(
         children: [
           searchBar(size: size),
-          searchButton(size: size),
+          searchButton(size: size, controller: home_controller),
           searchOutput(size: size),
           exitButton(size: size)
         ],
@@ -33,7 +36,7 @@ class _HomePageState extends State<HomePage>
   }
 }
 
-TextEditingController searchController = TextEditingController();
+
 
 Widget searchBar({required double size})
 {
@@ -46,7 +49,7 @@ Widget searchBar({required double size})
         width: size*0.4,
         child: Center(
           child: TextField(
-            controller: searchController,
+            controller: home_controller.textField,
             enabled: true,
             style: const TextStyle(
               color: Color(0xFF08446c),

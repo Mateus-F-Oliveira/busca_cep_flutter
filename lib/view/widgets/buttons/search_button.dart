@@ -1,7 +1,8 @@
+import 'package:busca_cep/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 
-Widget searchButton({required double size, TextEditingController? controller})
+Widget searchButton({required double size, required HomeController controller})
 {
   return Align(
     alignment: Alignment.topCenter,
@@ -15,10 +16,7 @@ Widget searchButton({required double size, TextEditingController? controller})
         height: size*0.06,
         width: size*0.14,
         child: TextButton(
-          onPressed: () async
-          {
-            
-          },
+          onPressed: (){controller.searchCode(controller.textField.text);},
           child: const Text(
             "BUSCAR",
             textAlign: TextAlign.center,
